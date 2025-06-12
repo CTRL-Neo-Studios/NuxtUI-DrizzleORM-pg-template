@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme {
+    --font-sans: "Inter", "Atkinson Hyperlegible", "Public Sans", "Noto Sans Simplified Chinese", sans-serif;
+}
