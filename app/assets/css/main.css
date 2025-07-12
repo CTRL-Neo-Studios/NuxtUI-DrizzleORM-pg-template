@@ -2,5 +2,5 @@
 @import "@nuxt/ui";
 
 @theme {
-    --font-sans: "Inter", "Atkinson Hyperlegible", "Public Sans", "Noto Sans Simplified Chinese", sans-serif;
+    --font-sans: "Inter", "Segoe UI Variable Static Display", "Public Sans", "Noto Sans Simplified Chinese", sans-serif;
 }
