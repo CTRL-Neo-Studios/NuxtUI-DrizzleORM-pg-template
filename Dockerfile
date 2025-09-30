@@ -1,29 +1,41 @@
-FROM node:20-slim
+# Use Bun's official image
+FROM oven/bun:1 AS base
 
-# Use a larger base image to avoid corepack slowness in slim
-ARG NUXT_UI_PRO_LICENSE
+# Pass build args for environment
 ARG NUXT_UMAMI_HOST
 ARG NUXT_UMAMI_ID
-ENV NUXT_UI_PRO_LICENSE=$NUXT_UI_PRO_LICENSE
+
+# Set environment variables
 ENV NUXT_UMAMI_HOST=$NUXT_UMAMI_HOST
 ENV NUXT_UMAMI_ID=$NUXT_UMAMI_ID
-
-# Install pnpm directly (faster than corepack)
-RUN npm install -g pnpm
+ENV HOST=0.0.0.0
 
 WORKDIR /app
-COPY package*.json .npmrc ./
-RUN node --max-old-space-size=8000
+
+# Copy dependency manifests
+COPY package.json bun.lockb .npmrc ./
+
+# Install dependencies with Bun
+RUN bun install --frozen-lockfile
+
+# Copy source code
 COPY . .
 
-RUN pnpm install
-RUN pnpm approve-builds
-RUN pnpm run build
+# Build the Nuxt app
+# Note: Nuxt 3 uses `.output` by default in production builds
+RUN bun run build
 
-#COPY /app/.output /app/.output
-#COPY /app/node_modules /app/node_modules
+# Use a minimal stage for production (optional but recommended)
+FROM oven/bun:1 AS runner
 
-ENV HOST 0.0.0.0
+WORKDIR /app
+
+# Copy only the necessary artifacts
+COPY --from=base /app/.output ./.output
+COPY --from=base /app/node_modules ./node_modules
+
+ENV HOST=0.0.0.0
 EXPOSE 3000
-CMD ["node", ".output/server/index.mjs"]
-#CMD ["pnpm", "start"]
+
+# Start the server
+CMD ["bun", ".output/server/index.mjs"]
