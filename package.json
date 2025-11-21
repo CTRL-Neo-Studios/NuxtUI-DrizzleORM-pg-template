@@ -14,23 +14,23 @@
     "drizzle:pull": "drizzle-kit pull"
   },
   "dependencies": {
-    "@nuxt/fonts": "0.11.4",
+    "@nuxt/fonts": "0.12.1",
     "@nuxt/icon": "2.1.0",
-    "@nuxt/image": "1.11.0",
+    "@nuxt/image": "2.0.0",
     "@nuxt/scripts": "0.13.0",
     "@nuxt/test-utils": "3.20.1",
-    "@nuxt/ui": "^4.1.0",
+    "@nuxt/ui": "^4.2.0",
     "@unhead/vue": "^2.0.19",
     "drizzle-orm": "^0.44.7",
-    "nuxt": "^4.2.0",
+    "nuxt": "^4.2.1",
     "nuxt-auth-utils": "0.5.25",
     "nuxt-umami": "3.2.1",
     "postgres": "^3.4.7",
     "typescript": "^5.9.3",
-    "vue": "^3.5.22",
+    "vue": "^3.5.24",
     "vue-router": "^4.6.3"
   },
   "devDependencies": {
-    "drizzle-kit": "^0.31.6"
+    "drizzle-kit": "^0.31.7"
   }
 }
