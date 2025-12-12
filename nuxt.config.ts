@@ -8,13 +8,14 @@ export default defineNuxtConfig({
     css: ['~/assets/css/main.css'],
 
     modules: [
-        '@nuxt/ui',
-        '@nuxt/image',
-        '@nuxt/scripts',
-        '@nuxt/test-utils',
-        'nuxt-auth-utils',
-        'nuxt-umami',
-        '@nuxt/icon',
-        '@nuxt/fonts',
+      '@nuxt/ui',
+      '@nuxt/image',
+      '@nuxt/scripts',
+      '@nuxt/test-utils',
+      'nuxt-auth-utils',
+      'nuxt-umami',
+      '@nuxt/icon',
+      '@nuxt/fonts',
+      'nuxt-authorization',
     ],
 })
