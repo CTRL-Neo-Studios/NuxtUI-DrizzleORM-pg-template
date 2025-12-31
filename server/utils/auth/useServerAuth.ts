@@ -89,10 +89,38 @@ export function useServerAuth() {
         return user
     }
 
+    async function requireAdminOrModerator(event: H3Event) {
+        const user = await requireUser(event)
+
+        if (user.user.moderator == true || user.user.admin == true) {
+            return user
+        } else {
+            throw createError({
+                statusCode: 401,
+                statusMessage: 'Unauthorized'
+            })
+        }
+    }
+
+    async function requireAdmin(event: H3Event) {
+        const user = await requireUser(event)
+
+        if (user.user.admin == true) {
+            return user
+        } else {
+            throw createError({
+                statusCode: 401,
+                statusMessage: 'Unauthorized'
+            })
+        }
+    }
+
     return {
         createSession,
         getUser,
         requireUser,
+        requireAdmin,
+        requireAdminOrModerator,
         logout
     }
 }

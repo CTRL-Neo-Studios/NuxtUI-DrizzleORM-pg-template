@@ -21,6 +21,7 @@
     "@nuxt/scripts": "0.13.2",
     "@nuxt/test-utils": "3.21.0",
     "@nuxt/ui": "^4.3.0",
+    "@typescript/native-preview": "^7.0.0-dev.20251230.1",
     "@unhead/vue": "^2.1.1",
     "drizzle-orm": "^0.45.1",
     "nuxt": "^4.2.2",
