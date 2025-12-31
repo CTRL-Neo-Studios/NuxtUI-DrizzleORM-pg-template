@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
         .where(eq(users.email, body.email)))[0];
 
     // 2. Verify Password (using nuxt-auth-utils helper)
-    if (!user || !(await verifyPassword(body.password, user.password))) {
+    if (!user || !(await verifyPassword(user.password, body.password))) {
         throw createError({
             statusCode: 401,
             statusMessage: 'Invalid Email or Password',
