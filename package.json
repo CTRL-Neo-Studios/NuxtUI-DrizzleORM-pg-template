@@ -21,6 +21,9 @@
     "@nuxt/scripts": "0.13.2",
     "@nuxt/test-utils": "3.21.0",
     "@nuxt/ui": "^4.3.0",
+    "@tiptap/extension-collaboration": "^3.15.3",
+    "@tiptap/extension-node-range": "^3.15.3",
+    "@tiptap/y-tiptap": "^3.0.1",
     "@typescript/native-preview": "^7.0.0-dev.20251230.1",
     "@unhead/vue": "^2.1.1",
     "drizzle-orm": "^0.45.1",
@@ -29,9 +32,12 @@
     "nuxt-authorization": "0.3.5",
     "nuxt-umami": "3.2.1",
     "postgres": "^3.4.7",
+    "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3",
     "vue": "^3.5.26",
-    "vue-router": "^4.6.4"
+    "vue-router": "^4.6.4",
+    "yjs": "^13.6.29",
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "drizzle-kit": "^0.31.8"
