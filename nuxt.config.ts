@@ -11,7 +11,6 @@ export default defineNuxtConfig({
       '@nuxt/ui',
       '@nuxt/image',
       '@nuxt/scripts',
-      '@nuxt/test-utils',
       'nuxt-auth-utils',
       'nuxt-umami',
       '@nuxt/icon',

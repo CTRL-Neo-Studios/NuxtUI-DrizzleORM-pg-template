@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
-@theme static {
+@theme {
     --font-sans: "Inter", "Segoe UI Variable Static Display", "Public Sans", "Noto Sans Simplified Chinese", sans-serif;
 }
