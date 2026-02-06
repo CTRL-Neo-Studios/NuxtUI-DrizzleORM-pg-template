@@ -1,4 +1,4 @@
-# Nuxt Minimal Starter
+# Nuxt v4 + Nuxt UI v4 + Drizzle ORM + PostgreSQL
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
