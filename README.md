@@ -1,4 +1,4 @@
-# Nuxt v4 + Nuxt UI v4 + Drizzle ORM + PostgreSQL
+# Nuxt v4 + Nuxt UI v4 + Drizzle ORM + PostgreSQL Template
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
