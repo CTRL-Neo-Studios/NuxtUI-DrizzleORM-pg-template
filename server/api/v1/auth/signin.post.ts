@@ -3,6 +3,7 @@ import { useServerDb } from '~~/server/utils/core/useServerDb'
 import { users } from '~~/server/db/schema'
 import { eq } from 'drizzle-orm'
 import { useServerAuth } from '~~/server/utils/auth/useServerAuth'
+import { sanitizeEmail } from '~~/server/utils/security/useServerSanitization'
 
 const loginSchema = z.object({
     email: z.email(),
@@ -14,9 +15,14 @@ export default defineEventHandler(async (event) => {
     const { createSession } = useServerAuth()
     const body = await readValidatedBody(event, loginSchema.parse)
 
+    // Sanitize email input
+    const normalizedEmail = sanitizeEmail(body.email)
+
     // 1. Find User
-    const user = (await $db.select().from(users)
-        .where(eq(users.email, body.email)))[0];
+    const userResults = await $db.select().from(users)
+        .where(eq(users.email, normalizedEmail))
+    
+    const user = userResults[0]
 
     // 2. Verify Password (using nuxt-auth-utils helper)
     if (!user || !(await verifyPassword(user.password, body.password))) {
@@ -26,7 +32,10 @@ export default defineEventHandler(async (event) => {
         })
     }
 
-    // 3. Create Session
+    // 3. Clear any existing session to prevent session fixation
+    await clearUserSession(event)
+
+    // 4. Create new Session
     await createSession(event, user.id)
 
     return { success: true }
